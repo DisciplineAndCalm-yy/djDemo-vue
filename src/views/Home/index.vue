@@ -9,16 +9,16 @@
         <div class="swiper-wrap">
             <mt-swipe :auto="4000" class="clearfix">
                 <mt-swipe-item class="fll" v-for="(item, index) in banners" :key="index">
-                    <img class="swiper-img" :src="item">
+                    <img class="swiper-img" :src="item.imgUrl">
+                    <div class="swiper-font">
+                        {{item.title}}
+                    </div>
                 </mt-swipe-item>
             </mt-swipe>
-            <div class="swiper-font">
-                我爱中国
-            </div>
         </div>
         <div class="main">
             <div class="row">
-                <router-link class="item" to='/'>
+                <router-link class="item" :to="{ path: '/news', query: { title: '信工新闻眼', id: 0 } }">
                     <div>
                         <img src="../../../static/imgs/icon_01.png">
                     </div>
@@ -26,7 +26,7 @@
                         信工新闻眼
                     </div>
                 </router-link>
-                <router-link class="item" to='/'>
+                <router-link class="item" to='/life'>
                     <div>
                         <img src="../../../static/imgs/icon_03.png">
                     </div>
@@ -44,7 +44,7 @@
                 </router-link>
             </div>
             <div class="row">
-                <router-link class="item" to='/'>
+                <router-link class="item" :to="{ path: '/news', query: { title: '党建一点通', id: 3 } }">
                     <div>
                         <img src="../../../static/imgs/icon_04.png">
                     </div>
@@ -52,7 +52,7 @@
                         党建一点通
                     </div>
                 </router-link>
-                <router-link class="item" to='/'>
+                <router-link class="item" :to="{ path: '/news', query: { title: '党员亮身份', id: 5 } }">
                     <div>
                         <img src="../../../static/imgs/icon_06.png">
                     </div>
@@ -79,10 +79,10 @@
             </div>
             <div class="mid">
                 <div class="photo">
-                    <router-link to='/'></router-link>
+                    <router-link :to="{ path: '/news', query: { title: '随时随地学', id: 6 } }"></router-link>
                 </div>
                 <div class="photo">
-                    <router-link to='/'></router-link>
+                    <router-link :to="{ path: '/news', query: { title: '制度建设', id: 4 } }"></router-link>
                 </div>
             </div>
             <div class="right">
@@ -90,7 +90,7 @@
                     <router-link to='/'></router-link>
                 </div>
                 <div class="photo">
-                    <router-link to='/'></router-link>
+                    <router-link :to="{ path: '/news', query: { title: '特色活动', id: 1 } }"></router-link>
                 </div>
             </div>
         </div>
@@ -105,12 +105,21 @@
     data () {
       return {
         banners: [ 
-            '../../../static/imgs/swiper/46296e429c7cda71b941b99fa3461fd1.png',
-            '../../../static/imgs/swiper/4bbac18c1f8f6c0521b7b6af2ae8ad6c.png',
-            '../../../static/imgs/swiper/66e257fe2b5afdbb6acb8ed1127d06c9.png',
-            '../../../static/imgs/swiper/749b4f2a7cc56b5c0068545718fd24d4.png'
         ]
       }
+    },
+    methods: {
+        getData() {
+            this.$axios.get(`/carousel/carouselList.do?type=0`).then(res => {
+                console.log(res)
+                if(res.code == 1) {
+                    this.banners = res.rows
+                }
+            })
+        }
+    },
+    created() {
+        this.getData()
     }
   }
 </script>
@@ -162,11 +171,14 @@
     .swiper-font{
         position: absolute;
         z-index: 998;
+        left: 0.2rem;
         bottom: 0.1rem;
         width: 15rem;
         height: 1rem;
+        line-height: 1rem;
+        font-weight: 500;
         color: #ccc;
-        font-size: 18px;
+        font-size: 12px;
         background: rgba($color: #000000, $alpha: .3)
     }
 }
@@ -212,6 +224,12 @@
         height: 6.4rem;
         .photo{
             flex: 1;
+
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }

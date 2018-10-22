@@ -9,7 +9,12 @@ const components = {
   Message: () => import('@/views/Message'),
   Admin: () => import('@/views/Admin'),
   Login: () => import('@/views/Login'),
-  UserInfo: () => import('@/views/UserInfo')
+  UserInfo: () => import('@/views/UserInfo'),
+  MsgDetail: () => import('@/views/Message/Detail'),
+  News: () => import('@/views/News'),
+  Life: () => import('@/views/Life'),
+  Review: () => import('@/views/Review'),
+  Map: () => import('@/views/Map')
 }
 
 export default new Router({
@@ -27,7 +32,14 @@ export default new Router({
         {
           path: '/message',
           name: 'Message',
-          component: components.Message
+          component: components.Message,
+          children: [
+            {
+              path: '/msgDetail',
+              name: 'msgDetail',
+              component: components.MsgDetail
+            }
+          ]
         },
         {
           path: '/admin',
@@ -45,6 +57,26 @@ export default new Router({
       path: '/userinfo',
       name: 'UserInfo',
       component: components.UserInfo
+    },
+    {
+      path: '/news',
+      name: 'News',
+      component: components.News
+    },
+    {
+      path: '/life',
+      name: 'Life',
+      component: components.Life
+    },
+    {
+      path: '/review',
+      name: 'Review',
+      component: components.Review
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: components.Map
     }
   ],
 })

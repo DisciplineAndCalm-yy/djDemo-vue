@@ -6,6 +6,7 @@
         <div class="main">
             <div class="main-item clearfix" 
                 v-for="(message, index) in Messages" :key="index"
+                @click="$router.push(message.push)"
             >   
                 <div class="left fll">
                     <img :src="message.icon">
@@ -31,13 +32,13 @@
                         icon: '../../../static/imgs/iconfont_gonggaotongzhi.png',
                         content: '关于我院党总支近期将举办党的十九大知识竞赛的通知',
                         createtime: '2017-10-30 14:53:56',
-                        push: '/'
+                        push: '/Message/msgDetail'
                     },
                     {
                         icon: '../../../static/imgs/iconfont_gonggaotongzhi.png',
                         content: '信息工程学院组织教工党员赴何家冲开展“最佳党日活动” ',
                         createtime: '2017-10-30 14:53:56',
-                        push: '/'
+                        push: '/Message/msgDetail'
                     }
                 ]
             }
