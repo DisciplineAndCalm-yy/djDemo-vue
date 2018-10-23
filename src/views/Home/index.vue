@@ -9,10 +9,12 @@
         <div class="swiper-wrap">
             <mt-swipe :auto="4000" class="clearfix">
                 <mt-swipe-item class="fll" v-for="(item, index) in banners" :key="index">
-                    <img class="swiper-img" :src="item.imgUrl">
-                    <div class="swiper-font">
-                        {{item.title}}
-                    </div>
+                    <router-link :to="{ path: '/news/newsdetail', query: { newsId: item.url, title: '随时随地学' } }">
+                        <img class="swiper-img" :src="item.imgUrl">
+                        <div class="swiper-font">
+                            {{item.title}}
+                        </div>
+                    </router-link>
                 </mt-swipe-item>
             </mt-swipe>
         </div>
@@ -75,7 +77,6 @@
         </div>
         <div class="main-footer">
             <div class="left">
-                <router-link to='/'></router-link>
             </div>
             <div class="mid">
                 <div class="photo">
@@ -87,7 +88,7 @@
             </div>
             <div class="right">
                 <div class="photo">
-                    <router-link to='/'></router-link>
+                    <router-link :to="{ path: '/newspic', query: { title: '随时随地拍', id: 7 } }"></router-link>
                 </div>
                 <div class="photo">
                     <router-link :to="{ path: '/news', query: { title: '特色活动', id: 1 } }"></router-link>

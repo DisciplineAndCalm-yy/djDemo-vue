@@ -10,11 +10,15 @@ const components = {
   Admin: () => import('@/views/Admin'),
   Login: () => import('@/views/Login'),
   UserInfo: () => import('@/views/UserInfo'),
-  MsgDetail: () => import('@/views/Message/Detail'),
   News: () => import('@/views/News'),
   Life: () => import('@/views/Life'),
   Review: () => import('@/views/Review'),
-  Map: () => import('@/views/Map')
+  Map: () => import('@/views/Map'),
+  Newsdetail: () => import('@/views/News/Newsdetail'),
+  Newspic: () => import('@/views/News/Newspic'),
+  Adminscore: () => import('@/views/Adminscore'),
+  Changepsw: () => import('@/views/Changepsw'),
+  Pay: () => import('@/views/Pay')
 }
 
 export default new Router({
@@ -33,13 +37,6 @@ export default new Router({
           path: '/message',
           name: 'Message',
           component: components.Message,
-          children: [
-            {
-              path: '/msgDetail',
-              name: 'msgDetail',
-              component: components.MsgDetail
-            }
-          ]
         },
         {
           path: '/admin',
@@ -61,7 +58,12 @@ export default new Router({
     {
       path: '/news',
       name: 'News',
-      component: components.News
+      component: components.News,
+    },
+    {
+      path: '/news/newsdetail',
+      name: 'Newsdetail',
+      component: components.Newsdetail
     },
     {
       path: '/life',
@@ -77,6 +79,26 @@ export default new Router({
       path: '/map',
       name: 'Map',
       component: components.Map
+    },
+    {
+      path: '/newspic',
+      name: 'Newspic',
+      component: components.Newspic
+    },
+    {
+      path: '/adminscore',
+      name: 'Adminscore',
+      component: components.Adminscore
+    },
+    {
+      path: '/changepsw',
+      name: 'Changepsw',
+      component: components.Changepsw
+    },
+    {
+      path: '/pay',
+      name: 'Pay',
+      component: components.Pay
     }
   ],
 })

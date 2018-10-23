@@ -6,15 +6,16 @@
         <div class="main">
             <div class="main-item clearfix" 
                 v-for="(message, index) in Messages" :key="index"
-                @click="$router.push(message.push)"
             >   
-                <div class="left fll">
-                    <img :src="message.icon">
-                </div>
-                <div class="right fll">
-                    <div class="content">{{message.content}}</div>
-                    <div class="time">{{message.createtime}}</div>
-                </div>
+                <router-link :to="{ path: '/news/newsdetail', query: { title: '通知早知道', newsId: message.newsId } }">
+                    <div class="left fll">
+                        <img src="../../../static/imgs/iconfont_gonggaotongzhi.png">
+                    </div>
+                    <div class="right fll">
+                        <div class="content">{{message.title}}</div>
+                        <div class="time">{{message.currentTime}}</div>
+                    </div>
+                </router-link>
             </div>
             <div class="nodata">
                 <span>没有数据了</span>
@@ -27,21 +28,21 @@
     export default {
         data() {
             return {
-                Messages: [
-                    {
-                        icon: '../../../static/imgs/iconfont_gonggaotongzhi.png',
-                        content: '关于我院党总支近期将举办党的十九大知识竞赛的通知',
-                        createtime: '2017-10-30 14:53:56',
-                        push: '/Message/msgDetail'
-                    },
-                    {
-                        icon: '../../../static/imgs/iconfont_gonggaotongzhi.png',
-                        content: '信息工程学院组织教工党员赴何家冲开展“最佳党日活动” ',
-                        createtime: '2017-10-30 14:53:56',
-                        push: '/Message/msgDetail'
-                    }
-                ]
+                Messages: []
             }
+        },
+        methods: {
+            getData() {
+                this.$axios.get('/news/newsList.do?page=1&rows=10&type=2').then(res => {
+                    if(res.code == 1) {
+                        this.Messages = res.rows
+                    }
+                })
+            }
+        },
+        created() {
+            this.getData()
+            console.log(this.Messages)
         }
     }
 </script>
@@ -64,6 +65,11 @@
         font-size: 15px;
         color: #333;
         border-bottom: 1px solid #e5e5e5;
+
+        a{
+            text-decoration: none;
+            color: #555;
+        }
 
         .left{
             display: inline-block;

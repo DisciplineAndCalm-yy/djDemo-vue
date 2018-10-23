@@ -1,26 +1,17 @@
 <template>
-    <div class="news">
+    <div class="newspic">
         <div class="header">
             <div class="back" @click="$router.back(-1)"> < </div>
             <span class="title">{{$route.query.title}}</span>
         </div>
-        <div  class="wrap"
+        <div  class="wrap clearfix"
             v-infinite-scroll="loadMore"
             infinite-scroll-disabled="loading"
             infinite-scroll-distance="10">
-            <div class="main" v-for="(item, index) in formData" :key="index">
+            <div class="main fll" v-for="(item, index) in formData" :key="index">
                 <router-link :to="{ path: '/news/newsdetail', query: { newsId: item.newsId, title: title } }">
-                    <div>
-                        <img class="img" :src="item.pic">
-                    </div>
-                    <div class="right">
-                        <span class="r-title">{{item.title}}</span>
-                        <div class="bottom">
-                            <span>{{item.currentTime}}</span>
-                            <img class="eye" src="../../../static/imgs/eyes.png">
-                            <span>{{item.count}}</span>
-                        </div>
-                    </div>
+                   <img class="img" :src="item.pic">
+                   <span class="title">{{item.title}}</span>
                 </router-link>
             </div>
         </div>
@@ -63,7 +54,7 @@
 </script>
 
 <style scoped lang='scss'>
-.news{
+.newspic{
     width: 15rem;
 
     .header{
@@ -96,55 +87,33 @@
     }
 
     .main{
-        width: 14.2rem;
-        height: 3.2rem;
+        display: inline-block;
+        width: 6.6rem;
+        height: 6.8rem;
         padding: 10px;
-        border-bottom: 1px solid #c1c3c5;
 
         a{
-            display: flex;
+            display: block;
             width: 100%;
             height: 100%;
             text-decoration: none;
-        }
 
-        .img{
-            flex: 1;
-            width: 80px;
-            height: 80px;
-        }
+            .img{
+                display: block;
+                width: 6.2rem;
+                height: 4.8rem;
+            }
 
-        .right{
-            flex: 3;
-            font-size: 12px;
-            margin-left: 10px;
-            color: #777;
-
-            .r-title{
+            .title{
+                margin-top: 6px;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 2;
                 overflow: hidden;
-                font-size: 16px;
-                color: #333;
+                font-size: 14px;
+                color: #888;
             }
         }
-    }
-}
-
-.bottom{
-    display: flex;
-    margin-top: 16px;
-    width: 100%;
-    height: 20px;
-    line-height: 20px;
-
-    .eye{
-        display: block;
-        margin-left: 70px;
-        margin-right: 10px;
-        width: 20px;
-        height: 20px;
     }
 }
 

@@ -50,17 +50,20 @@
                     {
                         title: '个人量化积分',
                         icon: '../../../static/imgs/lxjf.png',
-                        pushLogin: '/login'
+                        pushLogin: '/login',
+                        push: '/adminscore'
                     },
                     {
                         title: '修改密码',
                         icon: '../../../static/imgs/xgmm.png',
-                        pushLogin: '/login'
+                        pushLogin: '/login',
+                        push: '/changepsw'
                     },
                     {
                         title: '党费缴纳',
                         icon: '../../../static/imgs/icon3.png',
-                        pushLogin: '/login'
+                        pushLogin: '/login',
+                        push: '/pay'
                     }
                 ]
             }
