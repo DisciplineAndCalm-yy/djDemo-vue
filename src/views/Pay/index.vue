@@ -17,11 +17,13 @@
                     <span class="fll">支付宝</span>
                     <img class="right flr" src="../../../static/imgs/right.png">
                 </div>
-                <div class="pay-we" v-if="showWechat">
-                    <img src="../../../static/imgs/wechatpay.jpg">
-                </div>
-                <div class="pay-zhi" v-if="ShowZhifubao">
-                    <img src="../../../static/imgs/zhifubao.jpg">
+                <div class="i-wrap">
+                    <div class="pay-we" v-if="ShowWechat">
+                        <img src="../../../static/imgs/wechatpay.jpg">
+                    </div>
+                    <div class="pay-zhi" v-if="ShowZhifubao">
+                        <img src="../../../static/imgs/zhifubao.jpg">
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,6 +45,8 @@
             changeZhifubao() {
                 this.ShowZhifubao = !this.ShowZhifubao
             },
+        },
+        created() {
         }
     }
 </script>
@@ -128,23 +132,23 @@
 }
 
 .pay-we, .pay-zhi{
-    background:rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
     width: 100%;
     height: 100%;
     position: absolute;
-    top:0;
-    left:0;
-    z-index:1000;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 
     img{
         width: 10rem;
         height: 12rem;
-        background-color:#fff;
-        border-radius:4px;
+        background-color: #fff;
+        border-radius: 4px;
         left: 15%;
-        top:50%;
-        margin-top:-150px;
-        position:relative;
+        top: 50%;
+        margin-top: -150px;
+        position: relative;
     }
 }
 </style>
