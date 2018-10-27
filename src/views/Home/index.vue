@@ -62,7 +62,7 @@
                         党员亮身份
                     </div>
                 </router-link>
-                <router-link class="item" to='/'>
+                <router-link class="item" to='/today'>
                     <div>
                         <img src="../../../static/imgs/icon_02.png">
                     </div>

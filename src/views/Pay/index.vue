@@ -18,10 +18,10 @@
                     <img class="right flr" src="../../../static/imgs/right.png">
                 </div>
                 <div class="i-wrap">
-                    <div class="pay-we" v-if="ShowWechat">
+                    <div class="pay-we" v-if="ShowWechat" @click="close">
                         <img src="../../../static/imgs/wechatpay.jpg">
                     </div>
-                    <div class="pay-zhi" v-if="ShowZhifubao">
+                    <div class="pay-zhi" v-if="ShowZhifubao" @click="close">
                         <img src="../../../static/imgs/zhifubao.jpg">
                     </div>
                 </div>
@@ -45,6 +45,10 @@
             changeZhifubao() {
                 this.ShowZhifubao = !this.ShowZhifubao
             },
+            close() {
+                this.ShowWechat = false,
+                this.ShowZhifubao = false
+            }
         },
         created() {
         }

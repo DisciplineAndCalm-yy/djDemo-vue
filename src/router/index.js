@@ -18,7 +18,9 @@ const components = {
   Newspic: () => import('@/views/News/Newspic'),
   Adminscore: () => import('@/views/Adminscore'),
   Changepsw: () => import('@/views/Changepsw'),
-  Pay: () => import('@/views/Pay')
+  Pay: () => import('@/views/Pay'),
+  Scoredetail: () => import('@/views/Scoredetail'),
+  Today: () => import('@/views/Today')
 }
 
 export default new Router({
@@ -99,6 +101,16 @@ export default new Router({
       path: '/pay',
       name: 'Pay',
       component: components.Pay
+    },
+    {
+      path: '/scoredetail',
+      name: 'Scoredetail',
+      component: components.Scoredetail
+    },
+    {
+      path: '/today',
+      name: 'Today',
+      component: components.Today
     }
   ],
 })
